@@ -43,8 +43,8 @@
   }
 
   ul#band {
-    list-style: none;
-    padding: 0;
+    list-style: disc;
+    padding-left: 20px;
     margin: 0;
     max-height: 450px;
     overflow-y: auto;
@@ -133,7 +133,7 @@
 
   const ul = document.getElementById('band');
 
-  // Populate list
+  // Populate list with bullets
   bands.forEach(band => {
     const li = document.createElement('li');
     li.textContent = band;
@@ -142,4 +142,3 @@
 </script>
 </body>
 </html>
-
