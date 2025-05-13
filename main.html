@@ -1,58 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sorted Band List</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'); /* Example background */
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    #band {
-      list-style-type: disc; /* Bullets as shown in the image */
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-      border-radius: 10px;
-      max-width: 400px;
-      margin: 0;
-    }
-    #band li {
-      padding: 5px 0;
-      font-size: 16px;
-      color: #333;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabetical Article Sorter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
 </head>
 <body>
-  <ul id="band"></ul>
+    <h1>Sorted Bands</h1>
+    <ul id="band"></ul>
 
-  <script>
-    const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+    <script>
+        const bands = [
+            'The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 
+            'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 
+            'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'
+        ];
 
-    // Function to get sort key by removing 'a', 'an', 'the' from start
-    function getSortKey(band) {
-      return band.replace(/^(a|an|the)\s+/i, '').trim();
-    }
+        function strip(article) {
+            return article.replace(/^(a |an |the )/i, '').trim();
+        }
 
-    // Sort bands array
-    bands.sort((a, b) => getSortKey(a).localeCompare(getSortKey(b)));
+        const sortedBands = bands.sort((a, b) => strip(a).localeCompare(strip(b)));
 
-    // Populate the unordered list
-    const bandList = document.getElementById('band');
-    bands.forEach(band => {
-      const li = document.createElement('li');
-      li.textContent = band;
-      bandList.appendChild(li);
-    });
-  </script>
+        const bandList = document.getElementById('band');
+        sortedBands.forEach(band => {
+            const li = document.createElement('li');
+            li.textContent = band;
+            bandList.appendChild(li);
+        });
+    </script>
 </body>
 </html>
