@@ -5,7 +5,7 @@
   <title>Alphabetical Article Sorter</title>
   <style>
     body {
-      background: url(https://user-images.githubusercontent.com/78348500/218320592-e82de1d4-dca2-4a76-901a-7ca5c5b3fc95.png) no-repeat center center fixed;
+      background: url('https://www.bing.com/images/search?q=nature+images+hd&id=CF2F957EE1FCB4E3266BAD63ECBC2A44414F8C3D&FORM=IACFIR') no-repeat center center fixed;
       background-size: cover;
       font-family: sans-serif;
     }
@@ -19,5 +19,28 @@
     }
   </style>
 </head>
+<body>
+
+<ul id="band"></ul>
+
+<script>
+  const bands = [
+    'The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean',
+    'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans',
+    'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'
+  ];
+
+  function stripArticle(name) {
+    return name.replace(/^(a |an |the )/i, '').trim();
+  }
+
+  const sortedBands = bands.sort((a, b) => {
+    return stripArticle(a).localeCompare(stripArticle(b));
+  });
+
+  const ul = document.getElementById('band');
+  ul.innerHTML = sortedBands.map(band => <li>${band}</li>).join('');
+</script>
+
 </body>
 </html>
